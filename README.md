@@ -30,6 +30,7 @@ project-root/
 
 ## Use This Template
 This repository is set up as a template! 🚀 Click the **"Use this template"** button on GitHub to create your own repository based on this starter template.
+> ![image](https://github.com/user-attachments/assets/504f2c84-f260-4c94-9123-705f1cf30d86)
 
 ## Available Technologies in the Template
 - Jetpack Compose
