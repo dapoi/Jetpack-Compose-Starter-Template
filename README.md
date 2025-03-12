@@ -2,6 +2,9 @@
 
 A starter template for Android development using Jetpack Compose, following best practices and modularization.
 
+## Preview
+https://github.com/user-attachments/assets/62be356d-284e-4d3a-9b14-3478ee4898ee
+
 ## Features
 - **Jetpack Compose UI** - Fully built using Jetpack Compose for a modern UI experience.
 - **Modularization** - Separation of concerns with a structured module-based architecture.
@@ -22,8 +25,7 @@ project-root/
 ├── build-logic/        # Gradle convention plugins
 ```
 
-## Getting Started
-### Prerequisites
+## Prerequisites
 - Android Studio Giraffe or newer
 - JDK 17+
 - Gradle 8.9
