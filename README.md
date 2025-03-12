@@ -26,7 +26,7 @@ project-root/
 ### Prerequisites
 - Android Studio Giraffe or newer
 - JDK 17+
-- Gradle 8+
+- Gradle 8.9
 
 ## Use This Template
 This repository is set up as a template! 🚀 Click the **"Use this template"** button on GitHub to create your own repository based on this starter template.
