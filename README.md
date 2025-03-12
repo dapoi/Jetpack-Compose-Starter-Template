@@ -39,6 +39,7 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 - Jetpack Navigation
 - Coroutine & Flow
 - Retrofit & Gson
+- DataStore
 
 ## Contribution
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
