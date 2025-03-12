@@ -13,7 +13,7 @@ A starter template for Android development using Jetpack Compose, following best
 ```
 project-root/
 ├── app/                # Main application module
-├── core/common/        # Common utilities and helpers
+├── core/common/        # Common utilities, components, and helpers
 ├── core/data/          # Data handling (repository, API, database)
 │   ├── api/            # (Recommended) Separate module if you have multiple services
 ├── core/navigation/    # Navigation handling module
