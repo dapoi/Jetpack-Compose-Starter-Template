@@ -12,7 +12,6 @@ class FeaturePlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 alias(libs.plugins.base.library)
-                alias(libs.plugins.base.hilt)
                 alias(libs.plugins.base.navigation)
                 alias(libs.plugins.base.library.compose)
             }
