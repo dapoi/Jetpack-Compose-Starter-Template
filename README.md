@@ -5,12 +5,10 @@ A starter template for Android development using Jetpack Compose, following best
 ## Preview
 https://github.com/user-attachments/assets/62be356d-284e-4d3a-9b14-3478ee4898ee
 
-## Features
+## Highlights
 - **Jetpack Compose UI** - Fully built using Jetpack Compose for a modern UI experience.
 - **Modularization** - Separation of concerns with a structured module-based architecture.
 - **Best Practices** - Implements MVVM, Clean Architecture, and other industry standards.
-- **Dependency Injection** - Uses Hilt for managing dependencies.
-- **Navigation Component** - Integrated with Jetpack Navigation for seamless screen transitions.
 
 ## Project Structure
 ```
@@ -35,10 +33,8 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 > ![image](https://github.com/user-attachments/assets/504f2c84-f260-4c94-9123-705f1cf30d86)
 
 ## Available Technologies in the Template
-- Jetpack Compose
-- Kotlin
 - Hilt (Dependency Injection)
-- Jetpack Navigation
+- Type Safe Jetpack Navigation
 - Coroutine & Flow
 - Retrofit & Gson
 - DataStore
