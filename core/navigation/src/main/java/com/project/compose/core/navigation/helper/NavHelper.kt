@@ -66,6 +66,24 @@ inline fun <reified T : Any> customNavType(
 
 inline fun <reified T : Any> generateCustomNavType() = typeOf<T>() to customNavType<T>()
 
+inline fun <reified T> NavController.setBackPressedWithArgs(
+    key: String,
+    value: T
+) = previousBackStackEntry?.savedStateHandle?.set(key, Json.encodeToString(value))
+
+inline fun <reified T> NavController.getArgsWhenBackPressed(
+    key: String
+): T? = try {
+    currentBackStackEntry?.savedStateHandle?.run {
+        val result = get<String>(key).orEmpty()
+        remove<String>(key)
+        Json.decodeFromString(result)
+    }
+} catch (e: Exception) {
+    e.printStackTrace()
+    null
+}
+
 fun NavController.navigateTo(
     route: Any,
     popUpTo: Any? = null,
@@ -95,24 +113,6 @@ fun NavController.navigateClearBackStack(route: Any) {
         launchSingleTop = true
         restoreState = false
     }
-}
-
-inline fun <reified T> NavController.setPopBackStackWithCustomArgs(
-    key: String,
-    value: T
-) = previousBackStackEntry?.savedStateHandle?.set(key, Json.encodeToString(value))
-
-inline fun <reified T> NavController.getPopBackStackWithCustomArgs(
-    key: String
-): T? = try {
-    currentBackStackEntry?.savedStateHandle?.run {
-        val result = get<String>(key).orEmpty()
-        remove<String>(key)
-        Json.decodeFromString(result)
-    }
-} catch (e: Exception) {
-    e.printStackTrace()
-    null
 }
 
 fun buildDeepLink(uri: String) = navDeepLink { uriPattern = uri }
