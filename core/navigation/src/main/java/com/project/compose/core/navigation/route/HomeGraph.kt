@@ -14,7 +14,11 @@ sealed class HomeGraph {
     @Serializable
     data class HomeDetailCustomRoute(val data: CustomData) : HomeGraph() {
         @Serializable
-        data class CustomData(val name: String) : HomeGraph()
+        data class CustomData(
+            val name: String,
+            val age: Int,
+            val desc: String
+        ) : HomeGraph()
 
         companion object {
             val customArgs = mapOf(generateCustomNavType<CustomData>())

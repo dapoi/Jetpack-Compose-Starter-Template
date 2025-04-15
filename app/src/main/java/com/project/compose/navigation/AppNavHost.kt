@@ -63,7 +63,7 @@ internal fun AppNavHost(navGraphs: Set<@JvmSuppressWildcards BaseNavGraph>) {
         }
 
         /**
-         * Remove below code if you don't want to show bottom navigation bar
+         * Remove below code if you don't need bottom navigation
          */
         AnimatedVisibility(visible = showBottomNav, enter = fadeIn(), exit = fadeOut()) {
             BottomAppBar {

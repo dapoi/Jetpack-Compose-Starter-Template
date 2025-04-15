@@ -20,40 +20,50 @@ import kotlinx.serialization.json.Json
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
+/**
+ * Extension function to create a composable screen in the NavGraphBuilder.
+ * @param useDefaultTransition Boolean flag to use default transition
+ * @param customArgs Map of custom arguments
+ * @param deepLinks List of deep links
+ * @param content Composable content to display
+ */
 inline fun <reified T : Any> NavGraphBuilder.composableScreen(
     useDefaultTransition: Boolean = true,
     customArgs: Map<KType, NavType<*>>? = null,
     deepLinks: List<NavDeepLink>? = null,
     noinline content: @Composable (AnimatedContentScope.(NavBackStackEntry) -> Unit)
-) {
-    composable<T>(
-        typeMap = customArgs ?: emptyMap(),
-        deepLinks = deepLinks ?: emptyList(),
-        enterTransition = {
-            if (useDefaultTransition) {
-                slideIntoContainer(towards = Start, animationSpec = tween(350))
-            } else fadeIn(tween(350))
-        },
-        exitTransition = {
-            fadeOut(animationSpec = tween(350))
-        },
-        popEnterTransition = {
-            fadeIn(animationSpec = tween(350))
-        },
-        popExitTransition = {
-            if (useDefaultTransition) {
-                slideOutOfContainer(towards = End, animationSpec = tween(350))
-            } else fadeOut(tween(350))
-        },
-        content = content
-    )
-}
+) = composable<T>(
+    typeMap = customArgs ?: emptyMap(),
+    deepLinks = deepLinks ?: emptyList(),
+    enterTransition = {
+        if (useDefaultTransition) {
+            slideIntoContainer(towards = Start, animationSpec = tween(350))
+        } else fadeIn(tween(350))
+    },
+    exitTransition = {
+        fadeOut(animationSpec = tween(350))
+    },
+    popEnterTransition = {
+        fadeIn(animationSpec = tween(350))
+    },
+    popExitTransition = {
+        if (useDefaultTransition) {
+            slideOutOfContainer(towards = End, animationSpec = tween(350))
+        } else fadeOut(tween(350))
+    },
+    content = content
+)
 
+/**
+ * Custom NavType for serializing and deserializing objects using Kotlin Serialization.
+ * This allows you to pass complex objects as arguments in the navigation graph.
+ */
 inline fun <reified T : Any> customNavType(
     isNullableAllowed: Boolean = false,
     json: Json = Json
 ) = object : NavType<T>(isNullableAllowed = isNullableAllowed) {
-    override fun get(bundle: Bundle, key: String) = bundle.getString(key)?.let<String, T>(json::decodeFromString)
+    override fun get(bundle: Bundle, key: String) =
+        bundle.getString(key)?.let<String, T>(json::decodeFromString)
 
     override fun parseValue(value: String): T = json.decodeFromString(value)
 
@@ -64,13 +74,29 @@ inline fun <reified T : Any> customNavType(
     }
 }
 
+/**
+ * Extension function to create a custom NavType for a specific type.
+ */
 inline fun <reified T : Any> generateCustomNavType() = typeOf<T>() to customNavType<T>()
 
+/**
+ * Extension function to set a value in the NavController's back stack entry's saved state handle.
+ * @param key The key to set the value for.
+ * @param value The value to set.
+ */
 inline fun <reified T> NavController.setBackPressedWithArgs(
     key: String,
     value: T
-) = previousBackStackEntry?.savedStateHandle?.set(key, Json.encodeToString(value))
+) {
+    popBackStack()
+    previousBackStackEntry?.savedStateHandle?.set(key, Json.encodeToString(value))
+}
 
+/**
+ * Extension function to get a value from the NavController's back stack entry's saved state handle.
+ * @param key The key to get the value for.
+ * @return The value associated with the key, or null if not found.
+ */
 inline fun <reified T> NavController.getArgsWhenBackPressed(
     key: String
 ): T? = try {
@@ -84,6 +110,15 @@ inline fun <reified T> NavController.getArgsWhenBackPressed(
     null
 }
 
+/**
+ * Extension function to navigate to a specific route in the NavController.
+ * @param route The route to navigate to.
+ * @param popUpTo The route to pop up to.
+ * @param inclusive Boolean flag to include the popped route.
+ * @param saveState Boolean flag to save the state of the popped route.
+ * @param launchSingleTop Boolean flag to launch the single top.
+ * @param restoreState Boolean flag to restore the state.
+ */
 fun NavController.navigateTo(
     route: Any,
     popUpTo: Any? = null,
@@ -104,6 +139,9 @@ fun NavController.navigateTo(
     }
 }
 
+/**
+ * Extension function to navigate to a specific route in the NavController and clear the back stack.
+ */
 fun NavController.navigateClearBackStack(route: Any) {
     navigate(route) {
         popUpTo(graph.id) {
@@ -115,4 +153,8 @@ fun NavController.navigateClearBackStack(route: Any) {
     }
 }
 
+/**
+ * Extension function to create a deep link for a specific URI.
+ * @param uri The URI pattern for the deep link.
+ */
 fun buildDeepLink(uri: String) = navDeepLink { uriPattern = uri }

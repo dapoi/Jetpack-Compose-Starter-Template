@@ -1,7 +1,10 @@
 package com.project.compose.feature.home.screen
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,10 +25,23 @@ internal fun HomeDetailCustomScreen(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(
-            text = args.data.name,
-            textAlign = TextAlign.Center,
-            modifier = Modifier.padding(horizontal = 24.dp)
-        )
+        Column(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.spacedBy(8.dp)
+        ) {
+            GetBiodata(args.data.name)
+            GetBiodata(args.data.age.toString())
+            GetBiodata(args.data.desc)
+        }
     }
+}
+
+@Composable
+private fun GetBiodata(data: String) {
+    Text(
+        text = data,
+        textAlign = TextAlign.Center,
+        modifier = Modifier.padding(horizontal = 24.dp)
+    )
 }

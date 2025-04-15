@@ -46,7 +46,13 @@ internal fun HomeLandingScreen(
         Button(
             onClick = {
                 navController.navigateTo(
-                    HomeDetailCustomRoute(CustomData("This is custom type data"))
+                    HomeDetailCustomRoute(
+                        CustomData(
+                            name = "Daffa",
+                            age = 24,
+                            desc = "Hello, I'm Daffa. I am 24 years old and this is a custom data class."
+                        )
+                    )
                 )
             }
         ) {
