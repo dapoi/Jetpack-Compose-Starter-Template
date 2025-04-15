@@ -3,7 +3,7 @@
 A starter template for Android development using Jetpack Compose, following best practices and modularization.
 
 ## Preview
-https://github.com/user-attachments/assets/62be356d-284e-4d3a-9b14-3478ee4898ee
+https://github.com/user-attachments/assets/5c0eaf78-9cb6-4be4-8f2f-f561d739f2a1
 
 ## Highlights
 - **Jetpack Compose UI** - Fully built using Jetpack Compose for a modern UI experience.
