@@ -1,3 +1,4 @@
+import org.gradle.api.JavaVersion.VERSION_21
 import org.gradle.initialization.DependenciesAccessors
 import org.gradle.kotlin.dsl.support.serviceOf
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
@@ -9,13 +10,13 @@ plugins {
 group = "com.project.compose.build_logic.convention"
 
 java {
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = VERSION_21
+    targetCompatibility = VERSION_21
 }
 
 tasks.withType<KotlinCompile>().configureEach {
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = VERSION_21.toString()
     }
 }
 

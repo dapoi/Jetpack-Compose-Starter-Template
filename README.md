@@ -24,8 +24,8 @@ project-root/
 ```
 
 ## Prerequisites
-- Android Studio Giraffe or newer
-- JDK 17+
+- Android Studio Meerkat or newer
+- JDK 21+
 - Gradle 8.9
 
 ## Use This Template

@@ -1,14 +1,14 @@
 [versions]
 androidGradlePlugin = "8.6.1"
-androidTools = "31.9.0"
+androidTools = "31.9.1"
 androidxActivity = "1.10.1"
-androidxComposeBom = "2025.02.00"
-androidxNavigation = "2.8.8"
+androidxComposeBom = "2025.04.00"
+androidxNavigation = "2.8.9"
 appCompat = "1.7.0"
 chucker = "4.1.0"
 coil = "3.1.0"
-coreKtxVersion = "1.15.0"
-dataStorePreferences = "1.1.3"
+coreKtxVersion = "1.16.0"
+dataStorePreferences = "1.1.4"
 espressoCore = "3.6.1"
 hilt = "2.55"
 hiltNavigation = "1.2.0"
@@ -20,7 +20,6 @@ ksp = "2.1.0-1.0.29"
 retrofit = "2.11.0"
 timber = "5.0.1"
 junitVersion = "4.13.2"
-material = "1.10.0"
 
 [libraries]
 androidx-activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "androidxActivity" }
@@ -54,7 +53,6 @@ android-tools-common = { group = "com.android.tools", name = "common", version.r
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 junit = { group = "junit", name = "junit", version.ref = "junitVersion" }
-material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 
 [plugins]
 # Project plugins that used in project, module & build-logic
