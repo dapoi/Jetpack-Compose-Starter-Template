@@ -5,6 +5,8 @@ import android.os.Bundle
 import androidx.compose.animation.AnimatedContentScope
 import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection.Companion.End
 import androidx.compose.animation.AnimatedContentTransitionScope.SlideDirection.Companion.Start
+import androidx.compose.animation.EnterTransition
+import androidx.compose.animation.ExitTransition
 import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.fadeOut
@@ -17,42 +19,39 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.composable
 import androidx.navigation.navDeepLink
 import kotlinx.serialization.json.Json
+import kotlin.reflect.KClass
 import kotlin.reflect.KType
 import kotlin.reflect.typeOf
 
 /**
  * Extension function to create a composable screen in the NavGraphBuilder.
- * @param useDefaultTransition Boolean flag to use default transition
- * @param customArgs Map of custom arguments
- * @param deepLinks List of deep links
- * @param content Composable content to display
+ * @param customArgs A map of custom NavTypes for the screen arguments.
+ * @param deepLinks A list of NavDeepLink for the screen.
+ * @param enterTransition The transition to apply when entering the screen.
+ * @param exitTransition The transition to apply when exiting the screen.
+ * @param popEnterTransition The transition to apply when entering the screen from the back stack.
+ * @param popExitTransition The transition to apply when exiting the screen to the back stack.
+ * @param content The composable content for the screen.
  */
 inline fun <reified T : Any> NavGraphBuilder.composableScreen(
-    useDefaultTransition: Boolean = true,
     customArgs: Map<KType, NavType<*>>? = null,
     deepLinks: List<NavDeepLink>? = null,
+    enterTransition: EnterTransition? = null,
+    exitTransition: ExitTransition? = null,
+    popEnterTransition: EnterTransition? = null,
+    popExitTransition: ExitTransition? = null,
     noinline content: @Composable (AnimatedContentScope.(NavBackStackEntry) -> Unit)
-) = composable<T>(
-    typeMap = customArgs ?: emptyMap(),
-    deepLinks = deepLinks ?: emptyList(),
-    enterTransition = {
-        if (useDefaultTransition) {
-            slideIntoContainer(towards = Start, animationSpec = tween(350))
-        } else fadeIn(tween(350))
-    },
-    exitTransition = {
-        fadeOut(animationSpec = tween(350))
-    },
-    popEnterTransition = {
-        fadeIn(animationSpec = tween(350))
-    },
-    popExitTransition = {
-        if (useDefaultTransition) {
-            slideOutOfContainer(towards = End, animationSpec = tween(350))
-        } else fadeOut(tween(350))
-    },
-    content = content
-)
+) {
+    composable<T>(
+        typeMap = customArgs ?: emptyMap(),
+        deepLinks = deepLinks ?: emptyList(),
+        enterTransition = { enterTransition ?: slideIntoContainer(Start, tween(350)) },
+        exitTransition = { exitTransition ?: fadeOut(tween(350)) },
+        popEnterTransition = { popEnterTransition ?: fadeIn(tween(350)) },
+        popExitTransition = { popExitTransition ?: slideOutOfContainer(End, tween(350)) },
+        content = content
+    )
+}
 
 /**
  * Custom NavType for serializing and deserializing objects using Kotlin Serialization.
@@ -113,44 +112,40 @@ inline fun <reified T> NavController.getArgsWhenBackPressed(
 /**
  * Extension function to navigate to a specific route in the NavController.
  * @param route The route to navigate to.
- * @param popUpTo The route to pop up to.
  * @param inclusive Boolean flag to include the popped route.
  * @param saveState Boolean flag to save the state of the popped route.
  * @param launchSingleTop Boolean flag to launch the single top.
  * @param restoreState Boolean flag to restore the state.
+ * @param popUpTo Optional KClass to pop up to a specific route in the back stack.
  */
 fun NavController.navigateTo(
     route: Any,
-    popUpTo: Any? = null,
     inclusive: Boolean = false,
     saveState: Boolean = true,
     launchSingleTop: Boolean = false,
-    restoreState: Boolean = true
-) {
-    navigate(route) {
-        popUpTo?.let {
-            popUpTo(it) {
-                this.inclusive = inclusive
-                this.saveState = saveState
-            }
+    restoreState: Boolean = true,
+    popUpTo: KClass<*>? = null
+) = navigate(route) {
+    popUpTo?.let {
+        popUpTo(it) {
+            this.inclusive = inclusive
+            this.saveState = saveState
         }
-        this.launchSingleTop = launchSingleTop
-        this.restoreState = restoreState
     }
+    this.launchSingleTop = launchSingleTop
+    this.restoreState = restoreState
 }
 
 /**
  * Extension function to navigate to a specific route in the NavController and clear the back stack.
  */
-fun NavController.navigateClearBackStack(route: Any) {
-    navigate(route) {
-        popUpTo(graph.id) {
-            inclusive = false
-            saveState = false
-        }
-        launchSingleTop = true
-        restoreState = false
+fun NavController.navigateClearBackStack(route: Any) = navigate(route) {
+    popUpTo(graph.id) {
+        inclusive = false
+        saveState = false
     }
+    launchSingleTop = true
+    restoreState = false
 }
 
 /**

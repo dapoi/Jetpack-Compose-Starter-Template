@@ -9,10 +9,10 @@ sealed class HomeGraph {
     data object HomeLandingRoute : HomeGraph()
 
     @Serializable
-    data class HomeDetailRoute(val name: String) : HomeGraph()
+    data class HomeDataTypeRoute(val name: String) : HomeGraph()
 
     @Serializable
-    data class HomeDetailCustomRoute(val data: CustomData) : HomeGraph() {
+    data class HomeDataClassRoute(val data: CustomData) : HomeGraph() {
         @Serializable
         data class CustomData(
             val name: String,
@@ -21,7 +21,10 @@ sealed class HomeGraph {
         ) : HomeGraph()
 
         companion object {
-            val customArgs = mapOf(generateCustomNavType<CustomData>())
+            val typeMap = mapOf(generateCustomNavType<CustomData>())
         }
     }
+
+    @Serializable
+    data object HomeFetchApiRoute : HomeGraph()
 }

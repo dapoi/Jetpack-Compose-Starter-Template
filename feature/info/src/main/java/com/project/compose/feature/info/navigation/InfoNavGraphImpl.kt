@@ -10,6 +10,6 @@ import javax.inject.Inject
 
 class InfoNavGraphImpl @Inject constructor() : BaseNavGraph {
     override fun NavGraphBuilder.createGraph(navController: NavController) {
-        composableScreen<InfoLandingRoute>(useDefaultTransition = false) { InfoLandingScreen(navController) }
+        composableScreen<InfoLandingRoute> { InfoLandingScreen() }
     }
 }

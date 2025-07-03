@@ -14,25 +14,35 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.project.compose.core.common.base.BaseScreen
+import com.project.compose.core.common.ui.component.attr.AppTopBarAttr.TopBarArgs
 import com.project.compose.feature.home.viewmodel.HomeDetailCustomViewModel
 
 @Composable
-internal fun HomeDetailCustomScreen(
+internal fun HomeDataClassScreen(
     navController: NavController,
     viewModel: HomeDetailCustomViewModel = hiltViewModel()
 ) = with(viewModel) {
-    Box(
+    BaseScreen(
         modifier = Modifier.fillMaxSize(),
-        contentAlignment = Alignment.Center
+        topBarArgs = TopBarArgs(
+            title = "Received Data Class Args",
+            onClickBack = { navController.popBackStack() }
+        )
     ) {
-        Column(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.spacedBy(8.dp)
+        Box(
+            modifier = Modifier.fillMaxSize(),
+            contentAlignment = Alignment.Center
         ) {
-            GetBiodata(args.data.name)
-            GetBiodata(args.data.age.toString())
-            GetBiodata(args.data.desc)
+            Column(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.spacedBy(8.dp)
+            ) {
+                GetBiodata(args.data.name)
+                GetBiodata(args.data.age.toString())
+                GetBiodata(args.data.desc)
+            }
         }
     }
 }
