@@ -13,7 +13,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.CenterHorizontally
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.project.compose.core.common.base.BaseScreen
 import com.project.compose.core.navigation.helper.navigateTo
@@ -21,13 +20,9 @@ import com.project.compose.core.navigation.route.HomeGraph.HomeDataClassRoute
 import com.project.compose.core.navigation.route.HomeGraph.HomeDataClassRoute.CustomData
 import com.project.compose.core.navigation.route.HomeGraph.HomeDataTypeRoute
 import com.project.compose.core.navigation.route.HomeGraph.HomeFetchApiRoute
-import com.project.compose.feature.home.viewmodel.HomeLandingViewModel
 
 @Composable
-internal fun HomeLandingScreen(
-    navController: NavController,
-    viewModel: HomeLandingViewModel = hiltViewModel()
-) = with(viewModel) {
+internal fun HomeLandingScreen(navController: NavController) {
     BaseScreen(showDefaultTopBar = false) {
         Column(
             modifier = Modifier

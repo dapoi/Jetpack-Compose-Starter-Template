@@ -6,8 +6,8 @@ import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.project.compose.core.data.BuildConfig.DEBUG
 import com.project.compose.core.data.repository.AppRepository
 import com.project.compose.core.data.repository.AppRepositoryImpl
-import com.project.compose.core.data.source.local.db.datastore.AppDataStore
-import com.project.compose.core.data.source.remote.service.ApiService
+import com.project.compose.core.data.source.local.AppDataStore
+import com.project.compose.core.data.source.remote.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -35,7 +35,7 @@ class DataModule {
         okHttpClient: OkHttpClient,
         gsonConverterFactory: GsonConverterFactory
     ): Retrofit = Retrofit.Builder()
-        .baseUrl("")
+        .baseUrl("https://api.sampleapis.com/")
         .addConverterFactory(gsonConverterFactory)
         .client(okHttpClient)
         .build()
