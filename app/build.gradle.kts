@@ -1,7 +1,5 @@
 plugins {
-    alias(libs.plugins.base.application)
-    alias(libs.plugins.base.application.compose)
-    alias(libs.plugins.base.hilt)
+    alias(libs.plugins.convention.application)
 }
 
 android {

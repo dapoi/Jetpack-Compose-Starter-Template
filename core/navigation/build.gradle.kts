@@ -1,4 +1,3 @@
 plugins {
-    alias(libs.plugins.base.library)
-    alias(libs.plugins.base.navigation)
+    alias(libs.plugins.convention.navigation)
 }

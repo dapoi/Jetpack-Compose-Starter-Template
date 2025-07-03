@@ -1,18 +1,20 @@
-import com.project.compose.build_logic.convention.ConstantLibs.coreModules
-import com.project.compose.build_logic.convention.alias
-import com.project.compose.build_logic.convention.implementation
-import com.project.compose.build_logic.convention.libs
+package plugin.module
+
+import utils.ConstantLibs.coreModules
+import utils.alias
+import utils.implementation
+import utils.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-class NavPlugin : Plugin<Project> {
+class NavigationModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
             with(pluginManager) {
+                alias(libs.plugins.convention.android.library)
                 alias(libs.plugins.kotlin.serialization)
                 alias(libs.plugins.kotlin.parcelize)
-                alias(libs.plugins.base.hilt)
             }
 
             dependencies {

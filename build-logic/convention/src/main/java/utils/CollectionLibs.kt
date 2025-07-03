@@ -1,22 +1,11 @@
-package com.project.compose.build_logic.convention
+package utils
 
-import com.android.build.api.dsl.CommonExtension
-import com.project.compose.build_logic.convention.ConstantLibs.COMPILER_VERSION
+import utils.ConstantLibs.coreModules
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
-internal fun Project.configCompose(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-) {
-    commonExtension.apply {
-        buildFeatures {
-            compose = true
-        }
-
-        composeOptions {
-            kotlinCompilerExtensionVersion = COMPILER_VERSION
-        }
-
+object CollectionLibs {
+    fun Project.composeDependencies() {
         dependencies {
             val bom = libs.androidx.compose.bom.get()
             implementation(platform(bom))
@@ -31,6 +20,19 @@ internal fun Project.configCompose(
             implementation(libs.coil.network.get())
             implementation(libs.coil.video.get())
             implementation(libs.timber.get())
+        }
+    }
+
+    fun Project.dataDependencies() {
+        dependencies {
+            implementation(project(coreModules[1]))
+            implementation(libs.dataStorePreferences.get())
+            implementation(libs.okhttp.interceptor.get())
+            implementation(libs.retrofit.lib.get())
+            implementation(libs.retrofit.converter.get())
+            implementation(libs.timber.get())
+            debugImplementation(libs.chucker.debug.get())
+            releaseImplementation(libs.chucker.release.get())
         }
     }
 }

@@ -1,13 +1,12 @@
 import org.gradle.api.JavaVersion.VERSION_21
 import org.gradle.initialization.DependenciesAccessors
 import org.gradle.kotlin.dsl.support.serviceOf
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     `kotlin-dsl`
 }
-
-group = "com.project.compose.build_logic.convention"
 
 java {
     sourceCompatibility = VERSION_21
@@ -15,8 +14,8 @@ java {
 }
 
 tasks.withType<KotlinCompile>().configureEach {
-    kotlinOptions {
-        jvmTarget = VERSION_21.toString()
+    compilerOptions {
+        jvmTarget.set(JVM_21)
     }
 }
 
@@ -39,37 +38,40 @@ tasks {
 
 gradlePlugin {
     plugins {
-        register("androidApplication") {
-            id = "base.application"
-            implementationClass = "AppPlugin"
+        // Registering the plugins for different module types
+        register("application") {
+            id = "convention.application"
+            implementationClass = "plugin.module.ApplicationModulePlugin"
         }
-        register("androidApplicationCompose") {
-            id = "base.application.compose"
-            implementationClass = "AppComposePlugin"
+        register("common") {
+            id = "convention.common"
+            implementationClass = "plugin.module.CommonModulePlugin"
         }
-        register("androidApi") {
-            id = "base.api"
-            implementationClass = "ApiPlugin"
+        register("data") {
+            id = "convention.data"
+            implementationClass = "plugin.module.DataModulePlugin"
         }
-        register("androidFeature") {
-            id = "base.feature"
-            implementationClass = "FeaturePlugin"
+        register("feature") {
+            id = "convention.feature"
+            implementationClass = "plugin.module.FeatureModulePlugin"
         }
-        register("androidHilt") {
-            id = "base.hilt"
-            implementationClass = "HiltPlugin"
+        register("navigation") {
+            id = "convention.navigation"
+            implementationClass = "plugin.module.NavigationModulePlugin"
         }
+
+        // Registering the plugins for Android, Compose, and Hilt
         register("androidLibrary") {
-            id = "base.library"
-            implementationClass = "LibPlugin"
+            id = "convention.android.library"
+            implementationClass = "plugin.AndroidLibPlugin"
         }
-        register("androidLibraryCompose") {
-            id = "base.library.compose"
-            implementationClass = "LibComposePlugin"
+        register("composeLibrary") {
+            id = "convention.compose.library"
+            implementationClass = "plugin.ComposeLibPlugin"
         }
-        register("androidNav") {
-            id = "base.navigation"
-            implementationClass = "NavPlugin"
+        register("hiltLibrary") {
+            id = "convention.hilt"
+            implementationClass = "plugin.HiltLibPlugin"
         }
     }
 }

@@ -1,10 +1,7 @@
-package com.project.compose.build_logic.convention
+package config
 
 import com.android.build.api.dsl.CommonExtension
-import com.project.compose.build_logic.convention.ConstantLibs.BASE_NAME
-import com.project.compose.build_logic.convention.ConstantLibs.FREE_COMPILER
-import com.project.compose.build_logic.convention.ConstantLibs.MAX_SDK_VERSION
-import com.project.compose.build_logic.convention.ConstantLibs.MIN_SDK_VERSION
+import utils.ConstantLibs
 import org.gradle.api.JavaVersion.VERSION_21
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
@@ -15,12 +12,12 @@ internal fun Project.configAndroid(
     commonExtension: CommonExtension<*, *, *, *, *, *>,
 ) {
     commonExtension.apply {
-        compileSdk = MAX_SDK_VERSION
-        namespace = (if (project.name == "app") BASE_NAME
-        else "$BASE_NAME.${project.path.replace(":", ".").substring(1)}")
+        compileSdk = ConstantLibs.MAX_SDK_VERSION
+        namespace = (if (project.name == "app") ConstantLibs.BASE_NAME
+        else "${ConstantLibs.BASE_NAME}.${project.path.replace(":", ".").substring(1)}")
 
         defaultConfig {
-            minSdk = MIN_SDK_VERSION
+            minSdk = ConstantLibs.MIN_SDK_VERSION
         }
 
         buildFeatures {
@@ -33,14 +30,10 @@ internal fun Project.configAndroid(
         }
     }
 
-    configureKotlinCompile()
-}
-
-private fun Project.configureKotlinCompile() {
     tasks.withType<KotlinCompile>().configureEach {
         compilerOptions {
             jvmTarget.set(JVM_21)
-            freeCompilerArgs.add(FREE_COMPILER)
+            freeCompilerArgs.add(ConstantLibs.FREE_COMPILER)
         }
     }
 }

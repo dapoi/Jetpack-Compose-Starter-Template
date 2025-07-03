@@ -1,4 +1,4 @@
-package com.project.compose.build_logic.convention
+package utils
 
 object ConstantLibs {
     val coreModules = listOf(
@@ -11,9 +11,8 @@ object ConstantLibs {
         "/META-INF/gradle/incremental.annotation.processors"
     )
     const val BASE_NAME = "com.project.compose"
-    const val COMPILER_VERSION = "1.5.21"
     const val MIN_SDK_VERSION = 26
-    const val MAX_SDK_VERSION = 35
+    const val MAX_SDK_VERSION = 36
     const val KSP = "ksp"
     const val FREE_COMPILER = "-opt-in=kotlin.RequiresOptIn"
 }
