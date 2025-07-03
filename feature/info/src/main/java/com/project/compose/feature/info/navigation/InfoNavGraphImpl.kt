@@ -1,5 +1,7 @@
 package com.project.compose.feature.info.navigation
 
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.navigation.NavController
 import androidx.navigation.NavGraphBuilder
 import com.project.compose.core.navigation.base.BaseNavGraph
@@ -10,6 +12,9 @@ import javax.inject.Inject
 
 class InfoNavGraphImpl @Inject constructor() : BaseNavGraph {
     override fun NavGraphBuilder.createGraph(navController: NavController) {
-        composableScreen<InfoLandingRoute> { InfoLandingScreen() }
+        composableScreen<InfoLandingRoute>(
+            enterTransition = fadeIn(),
+            popExitTransition = fadeOut()
+        ) { InfoLandingScreen() }
     }
 }
