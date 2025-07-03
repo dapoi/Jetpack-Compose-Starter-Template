@@ -1,7 +1,7 @@
 package config
 
 import com.android.build.api.dsl.CommonExtension
-import utils.CollectionLibs.composeDependencies
+import util.CollectionLibs.composeDependencies
 import org.gradle.api.Project
 
 internal fun Project.configCompose(

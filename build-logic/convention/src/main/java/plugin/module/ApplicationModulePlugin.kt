@@ -1,12 +1,12 @@
 package plugin.module
 
 import com.android.build.api.dsl.ApplicationExtension
-import utils.ConstantLibs.MAX_SDK_VERSION
-import utils.ConstantLibs.resourceExcludes
-import utils.alias
+import util.ConstantLibs.MAX_SDK_VERSION
+import util.ConstantLibs.resourceExcludes
+import util.alias
 import config.configAndroid
 import config.configCompose
-import utils.libs
+import util.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

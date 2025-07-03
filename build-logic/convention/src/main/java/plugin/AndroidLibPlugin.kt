@@ -1,10 +1,10 @@
 package plugin
 
 import com.android.build.gradle.LibraryExtension
-import utils.ConstantLibs.MAX_SDK_VERSION
-import utils.alias
+import util.ConstantLibs.MAX_SDK_VERSION
+import util.alias
 import config.configAndroid
-import utils.libs
+import util.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure

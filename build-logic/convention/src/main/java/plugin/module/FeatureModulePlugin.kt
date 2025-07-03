@@ -1,9 +1,9 @@
 package plugin.module
 
-import utils.ConstantLibs.coreModules
-import utils.alias
-import utils.implementation
-import utils.libs
+import util.ConstantLibs.coreModules
+import util.alias
+import util.implementation
+import util.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies

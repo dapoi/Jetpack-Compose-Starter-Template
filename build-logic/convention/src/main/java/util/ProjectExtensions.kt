@@ -1,4 +1,4 @@
-package utils
+package util
 
 import org.gradle.accessors.dm.LibrariesForLibs
 import org.gradle.api.Project

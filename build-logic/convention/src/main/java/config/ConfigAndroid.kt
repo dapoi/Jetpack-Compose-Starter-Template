@@ -1,7 +1,7 @@
 package config
 
 import com.android.build.api.dsl.CommonExtension
-import utils.ConstantLibs
+import util.ConstantLibs
 import org.gradle.api.JavaVersion.VERSION_21
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType

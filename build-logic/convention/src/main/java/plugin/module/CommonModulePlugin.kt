@@ -1,7 +1,7 @@
 package plugin.module
 
-import utils.alias
-import utils.libs
+import util.alias
+import util.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

@@ -1,8 +1,8 @@
 package plugin.module
 
-import utils.CollectionLibs.dataDependencies
-import utils.alias
-import utils.libs
+import util.CollectionLibs.dataDependencies
+import util.alias
+import util.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 

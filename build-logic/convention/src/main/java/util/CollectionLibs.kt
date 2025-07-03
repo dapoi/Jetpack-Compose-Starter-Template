@@ -1,6 +1,6 @@
-package utils
+package util
 
-import utils.ConstantLibs.coreModules
+import util.ConstantLibs.coreModules
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
 
