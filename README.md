@@ -36,6 +36,42 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 - Retrofit & Gson
 - DataStore
 
+## 🧰 Android Module Generator
+This project comes with a CLI script to auto-generate new modules in a snap.
+
+### ⚙️ How To Use
+Make the script executable:
+```bash
+chmod +x android-module-generator.sh
+```
+
+Run the generator:
+```bash
+./android-module-generator.sh
+```
+
+## 🚀 Example
+
+```
+📦 Base package (example: com.project.app): com.example.app
+📁 Parent folder (example: feature): feature
+🧩 Module name (example: home): profile
+```
+
+Generates:
+
+```
+feature/
+└── profile/
+    ├── build.gradle.kts
+    └── src/
+        └── main/
+            └── java/com/example/app/feature/profile
+```
+
+and automatically updates `settings.gradle.kts`.
+
+
 ## Contribution
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
 
