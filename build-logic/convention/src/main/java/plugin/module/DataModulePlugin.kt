@@ -9,7 +9,10 @@ import org.gradle.api.Project
 class DataModulePlugin : Plugin<Project> {
     override fun apply(target: Project) {
         with(target) {
-            pluginManager.alias(libs.plugins.convention.android.library)
+            with(pluginManager) {
+                alias(libs.plugins.convention.android.library)
+                alias(libs.plugins.room.db)
+            }
             dataDependencies()
         }
     }
