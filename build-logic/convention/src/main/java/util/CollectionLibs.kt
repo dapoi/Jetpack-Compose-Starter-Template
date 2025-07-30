@@ -3,6 +3,7 @@ package util
 import util.ConstantLibs.coreModules
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
+import util.ConstantLibs.KSP
 
 object CollectionLibs {
     fun Project.composeDependencies() {
@@ -30,7 +31,9 @@ object CollectionLibs {
             implementation(libs.okhttp.interceptor.get())
             implementation(libs.retrofit.lib.get())
             implementation(libs.retrofit.converter.get())
+            implementation(libs.room.runtime.get())
             implementation(libs.timber.get())
+            add(KSP, libs.room.compiler.get())
             debugImplementation(libs.chucker.debug.get())
             releaseImplementation(libs.chucker.release.get())
         }
