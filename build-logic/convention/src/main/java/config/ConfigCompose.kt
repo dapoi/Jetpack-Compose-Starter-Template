@@ -1,12 +1,16 @@
 package config
 
-import com.android.build.api.dsl.CommonExtension
-import util.CollectionLibs.composeDependencies
+import com.android.build.api.dsl.ApplicationExtension
+import com.android.build.api.dsl.LibraryExtension
 import org.gradle.api.Project
+import util.CollectionLibs.composeDependencies
 
 internal fun Project.configCompose(
-    commonExtension: CommonExtension<*, *, *, *, *, *>,
-) = commonExtension.apply {
-    buildFeatures { compose = true }
+    extension: Any
+) {
+    when (extension) {
+        is ApplicationExtension -> extension.buildFeatures { compose = true }
+        is LibraryExtension -> extension.buildFeatures { compose = true }
+    }
     composeDependencies()
 }

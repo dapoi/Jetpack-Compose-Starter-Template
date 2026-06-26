@@ -10,8 +10,8 @@ import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import com.project.compose.core.common.ui.theme.StarterTheme
 import com.project.compose.core.common.utils.LocalActivity
+import com.project.compose.core.navigation.AppNavHost
 import com.project.compose.core.navigation.base.BaseNavGraph
-import com.project.compose.navigation.AppNavHost
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 

@@ -15,17 +15,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextOverflow.Companion.Ellipsis
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
+import androidx.hilt.lifecycle.viewmodel.compose.hiltViewModel
 import com.project.compose.core.common.base.BaseScreen
 import com.project.compose.core.common.ui.component.attr.AppTopBarAttr.TopBarArgs
 import com.project.compose.core.common.utils.state.collectAsStateValue
 import com.project.compose.core.data.model.local.SampleModelEntity
+import com.project.compose.core.navigation.helper.Navigator
 import com.project.compose.feature.home.viewmodel.HomeFetchApiViewModel
 
 @Composable
 internal fun HomeFetchApiScreen(
-    navController: NavController,
+    navigator: Navigator,
     viewModel: HomeFetchApiViewModel = hiltViewModel()
 ) = with(viewModel) {
     val sampleData = sampleResponse.collectAsStateValue()
@@ -55,7 +55,7 @@ internal fun HomeFetchApiScreen(
     BaseScreen(
         topBarArgs = TopBarArgs(
             title = "Fetch API Sample",
-            onClickBack = { navController.popBackStack() }
+            onClickBack = { navigator.goBack() }
         )
     ) {
         contents?.let { data ->

@@ -1,30 +1,25 @@
 package com.project.compose.core.navigation.route
 
-import com.project.compose.core.navigation.helper.generateCustomNavType
+import androidx.navigation3.runtime.NavKey
 import kotlinx.serialization.Serializable
 
-@Serializable
-sealed class HomeGraph {
+sealed interface HomeGraph : NavKey {
     @Serializable
-    data object HomeLandingRoute : HomeGraph()
+    data object HomeLandingRoute : HomeGraph
 
     @Serializable
-    data class HomeDataTypeRoute(val name: String) : HomeGraph()
+    data class HomeDataTypeRoute(val name: String) : HomeGraph
 
     @Serializable
-    data class HomeDataClassRoute(val data: CustomData) : HomeGraph() {
+    data class HomeReceivedObjectRoute(val sampleObject: SampleObject) : HomeGraph {
         @Serializable
-        data class CustomData(
+        data class SampleObject(
             val name: String,
             val age: Int,
             val desc: String
-        ) : HomeGraph()
-
-        companion object {
-            val typeMap = mapOf(generateCustomNavType<CustomData>())
-        }
+        )
     }
 
     @Serializable
-    data object HomeFetchApiRoute : HomeGraph()
+    data object HomeFetchApiRoute : HomeGraph
 }

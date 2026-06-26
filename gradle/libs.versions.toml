@@ -1,24 +1,26 @@
 [versions]
-androidGradlePlugin = "8.11.1"
-androidTools = "31.11.1"
-androidxActivity = "1.10.1"
-androidxComposeBom = "2025.07.00"
-androidxNavigation = "2.9.2"
+androidGradlePlugin = "9.2.1"
+androidTools = "32.2.1"
+androidxActivity = "1.13.0"
+androidxComposeBom = "2026.06.00"
 appCompat = "1.7.1"
-chucker = "4.2.0"
-coil = "3.3.0"
-coreKtxVersion = "1.16.0"
-dataStorePreferences = "1.1.7"
-espressoCore = "3.6.1"
-hilt = "2.57"
-hiltNavigation = "1.2.0"
-interceptor = "5.1.0"
-junit = "1.2.1"
-kotlin = "2.2.0"
-kotlinxSerializationJson = "1.9.0"
-ksp = "2.2.0-2.0.2"
+chucker = "4.3.1"
+coil = "3.5.0"
+coreKtxVersion = "1.19.0"
+dataStorePreferences = "1.2.1"
+espressoCore = "3.7.0"
+hilt = "2.59.2"
+hilt-common = "1.3.0"
+interceptor = "5.4.0"
+junit = "1.3.0"
+kotlin = "2.4.0"
+kotlinxSerializationJson = "1.11.0"
+ksp = "2.3.7"
+lifecycleViewmodelNav3 = "2.11.0"
+moshi = "1.15.2"
+nav3Core = "1.1.3"
 retrofit = "3.0.0"
-room = "2.7.2"
+room = "2.8.4"
 timber = "5.0.1"
 
 [libraries]
@@ -31,7 +33,9 @@ androidx-compose-ui-tooling-preview = { group = "androidx.compose.ui", name = "u
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtxVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junit" }
-androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidxNavigation" }
+androidx-lifecycle-viewmodel-navigation3 = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-navigation3", version.ref = "lifecycleViewmodelNav3" }
+androidx-navigation3-runtime = { group = "androidx.navigation3", name = "navigation3-runtime", version.ref = "nav3Core" }
+androidx-navigation3-ui = { group = "androidx.navigation3", name = "navigation3-ui", version.ref = "nav3Core" }
 chucker-debug = { group = "com.github.chuckerteam.chucker", name = "library", version.ref = "chucker" }
 chucker-release = { group = "com.github.chuckerteam.chucker", name = "library-no-op", version.ref = "chucker" }
 coil-compose = { group = "io.coil-kt.coil3", name = "coil-compose", version.ref = "coil" }
@@ -39,8 +43,9 @@ coil-network = { group = "io.coil-kt.coil3", name = "coil-network-okhttp", versi
 coil-video = { group = "io.coil-kt.coil3", name = "coil-video", version.ref = "coil" }
 dataStorePreferences = { group = "androidx.datastore", name = "datastore-preferences", version.ref = "dataStorePreferences" }
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
-hilt-compiler = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
-hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hiltNavigation" }
+hilt-compiler-ext = { group = "androidx.hilt", name = "hilt-compiler", version.ref = "hilt-common" }
+hilt-compiler-google = { group = "com.google.dagger", name = "hilt-android-compiler", version.ref = "hilt" }
+hilt-navigation = { group = "androidx.hilt", name = "hilt-navigation-compose", version.ref = "hilt-common" }
 kotlinx-serialization-json = { group = "org.jetbrains.kotlinx", name = "kotlinx-serialization-json", version.ref = "kotlinxSerializationJson" }
 okhttp-interceptor = { group = "com.squareup.okhttp3", name = "logging-interceptor", version.ref = "interceptor" }
 retrofit-lib = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
@@ -53,13 +58,13 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
+kotlin-metadataJvm = { group = "org.jetbrains.kotlin", name = "kotlin-metadata-jvm", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]
 # Project plugins that used in gradle project, & build-logic
 android-application = { id = "com.android.application", version.ref = "androidGradlePlugin" }
 android-library = { id = "com.android.library", version.ref = "androidGradlePlugin" }
-kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
 kotlin-compose = { id = "org.jetbrains.kotlin.plugin.compose", version.ref = "kotlin" }
 kotlin-parcelize = { id = "org.jetbrains.kotlin.plugin.parcelize", version.ref = "kotlin" }
 kotlin-serialization = { id = "org.jetbrains.kotlin.plugin.serialization", version.ref = "kotlin" }

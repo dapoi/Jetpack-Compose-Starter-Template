@@ -12,22 +12,21 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.navigation.NavController
 import com.project.compose.core.common.base.BaseScreen
 import com.project.compose.core.common.ui.component.attr.AppTopBarAttr.TopBarArgs
-import com.project.compose.feature.home.viewmodel.HomeDetailCustomViewModel
+import com.project.compose.core.navigation.helper.Navigator
+import com.project.compose.core.navigation.route.HomeGraph.HomeReceivedObjectRoute
 
 @Composable
-internal fun HomeDataClassScreen(
-    navController: NavController,
-    viewModel: HomeDetailCustomViewModel = hiltViewModel()
-) = with(viewModel) {
+internal fun HomeReceivedObjectScreen(
+    navigator: Navigator,
+    args: HomeReceivedObjectRoute
+) = with(args) {
     BaseScreen(
         modifier = Modifier.fillMaxSize(),
         topBarArgs = TopBarArgs(
             title = "Received Data Class Args",
-            onClickBack = { navController.popBackStack() }
+            onClickBack = { navigator.goBack() }
         )
     ) {
         Box(
@@ -39,9 +38,9 @@ internal fun HomeDataClassScreen(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.spacedBy(8.dp)
             ) {
-                GetBiodata(args.data.name)
-                GetBiodata(args.data.age.toString())
-                GetBiodata(args.data.desc)
+                GetBiodata(sampleObject.name)
+                GetBiodata(sampleObject.age.toString())
+                GetBiodata(sampleObject.desc)
             }
         }
     }

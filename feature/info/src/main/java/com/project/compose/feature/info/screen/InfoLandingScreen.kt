@@ -8,15 +8,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment.Companion.Center
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.project.compose.core.common.base.BaseScreen
-import com.project.compose.feature.info.viewmodel.InfoViewModel
 import androidx.compose.ui.text.style.TextAlign.Companion.Center as TextAlignCenter
 
 @Composable
-internal fun InfoLandingScreen(
-    viewModel: InfoViewModel = hiltViewModel()
-) = with(viewModel) {
+internal fun InfoLandingScreen() {
     BaseScreen(showDefaultTopBar = false) {
         Box(
             modifier = Modifier.fillMaxSize(),

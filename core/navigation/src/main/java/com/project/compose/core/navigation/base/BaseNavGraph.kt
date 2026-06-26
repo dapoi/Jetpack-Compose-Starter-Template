@@ -1,8 +1,9 @@
 package com.project.compose.core.navigation.base
 
-import androidx.navigation.NavController
-import androidx.navigation.NavGraphBuilder
+import androidx.navigation3.runtime.EntryProviderScope
+import androidx.navigation3.runtime.NavKey
+import com.project.compose.core.navigation.helper.Navigator
 
 interface BaseNavGraph {
-    fun NavGraphBuilder.createGraph(navController: NavController)
+    fun EntryProviderScope<NavKey>.createGraph(navigator: Navigator)
 }

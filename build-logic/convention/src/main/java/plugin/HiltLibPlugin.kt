@@ -19,7 +19,9 @@ class HiltLibPlugin : Plugin<Project> {
             dependencies {
                 implementation(libs.hilt.android.get())
                 implementation(libs.hilt.navigation.get())
-                add(KSP, libs.hilt.compiler.get())
+                add(KSP, libs.hilt.compiler.google.get())
+                add(KSP, libs.hilt.compiler.ext.get())
+                add(KSP, libs.kotlin.metadataJvm.get())
             }
         }
     }
