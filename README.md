@@ -35,6 +35,7 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 - Coroutine & Flow
 - Retrofit & Gson
 - DataStore
+- Room Database
 
 ## 🧰 Android Module Generator
 This project comes with a CLI script to auto-generate new modules in a snap.
