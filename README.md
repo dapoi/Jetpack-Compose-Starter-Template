@@ -1,6 +1,6 @@
 # Jetpack Compose Starter Template
 
-A starter template for Android development using Jetpack Compose, following best practices and modularization.
+A starter template for Android development using Jetpack Compose with Nav3, following best practices and modularization.
 
 ## Highlights
 - **Jetpack Compose UI** - Fully built using Jetpack Compose for a modern UI experience.
@@ -31,9 +31,10 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 
 ## Available Technologies in the Template
 - Hilt (Dependency Injection)
-- Type Safe Jetpack Navigation
+- Navigation 3
 - Coroutine & Flow
-- Retrofit & Gson
+- Retrofit
+- Moshi
 - DataStore
 - Room Database
 
