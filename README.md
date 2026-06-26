@@ -21,9 +21,9 @@ project-root/
 ```
 
 ## Prerequisites
-- Android Studio Meerkat or newer
+- Android Studio Quail
 - JDK 21+
-- Gradle 8.14.2
+- Gradle 9.5.1
 
 ## Use This Template
 This repository is set up as a template! 🚀 Click the **"Use this template"** button on GitHub to create your own repository based on this starter template.
