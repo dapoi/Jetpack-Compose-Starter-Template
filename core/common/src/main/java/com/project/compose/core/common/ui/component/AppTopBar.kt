@@ -4,7 +4,6 @@ import androidx.compose.material3.CenterAlignedTopAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.MaterialTheme.colorScheme
 import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults.centerAlignedTopAppBarColors
 import androidx.compose.material3.TopAppBarDefaults.topAppBarColors
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -27,7 +26,7 @@ fun AppTopBar(
             title = title(title.orEmpty()),
             navigationIcon = backIcon(iconBack, onClickBack),
             actions = actionIcons(actionMenus),
-            colors = centerAlignedTopAppBarColors(
+            colors = topAppBarColors(
                 containerColor = topBarColor ?: colorScheme.background,
                 navigationIconContentColor = iconBackColor ?: Unspecified,
                 titleContentColor = titleColor ?: Unspecified,
