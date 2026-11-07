@@ -1,6 +1,6 @@
 package plugin.module
 
-import util.CollectionLibs.dataDependencies
+import util.Dependencies.dataDependencies
 import util.alias
 import util.libs
 import org.gradle.api.Plugin
@@ -11,6 +11,7 @@ class DataModulePlugin : Plugin<Project> {
         with(target) {
             with(pluginManager) {
                 alias(libs.plugins.convention.android.library)
+                alias(libs.plugins.convention.hilt)
                 alias(libs.plugins.room.db)
             }
             dataDependencies()

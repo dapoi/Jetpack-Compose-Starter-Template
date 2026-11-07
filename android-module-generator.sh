@@ -56,49 +56,16 @@ echo "🚀 Creating module '$FULL_PATH' with package '$BASE_PACKAGE.$PARENT_FOLD
 mkdir -p $FULL_PATH/src/main/java/$PACKAGE_PATH
 mkdir -p $FULL_PATH/src/main/res
 
+# Choose convention plugin based on parent folder
+CONVENTION_PLUGIN="convention.feature"
+if [ "$PARENT_FOLDER" = "core" ]; then
+    CONVENTION_PLUGIN="convention.common"
+fi
+
 # Create build.gradle.kts
 cat <<EOL > $FULL_PATH/build.gradle.kts
 plugins {
-    alias(libs.plugins.android.library)
-    alias(libs.plugins.kotlin.android)
-}
-
-android {
-    namespace = "com.example.home"
-    compileSdk = 36
-
-    defaultConfig {
-        minSdk = 24
-
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
-        consumerProguardFiles("consumer-rules.pro")
-    }
-
-    buildTypes {
-        release {
-            isMinifyEnabled = false
-            proguardFiles(
-                getDefaultProguardFile("proguard-android-optimize.txt"),
-                "proguard-rules.pro"
-            )
-        }
-    }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_11
-        targetCompatibility = JavaVersion.VERSION_11
-    }
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-}
-
-dependencies {
-    implementation(libs.androidx.core.ktx)
-    implementation(libs.androidx.appcompat)
-    implementation(libs.material)
-    testImplementation(libs.junit)
-    androidTestImplementation(libs.androidx.junit)
-    androidTestImplementation(libs.androidx.espresso.core)
+    alias(libs.plugins.$CONVENTION_PLUGIN)
 }
 EOL
 

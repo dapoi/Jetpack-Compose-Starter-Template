@@ -7,16 +7,18 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.withType
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-import util.ConstantLibs.BASE_NAME
-import util.ConstantLibs.MAX_SDK_VERSION
-import util.ConstantLibs.MIN_SDK_VERSION
-import util.ConstantLibs.freeCompiler
+import util.ProjectConstants.BASE_NAME
+import util.ProjectConstants.MAX_SDK_VERSION
+import util.ProjectConstants.MIN_SDK_VERSION
+import util.ProjectConstants.freeCompiler
 
-internal fun Project.configAndroid(extension: Any) {
-    when (extension) {
-        is ApplicationExtension -> extension.configure(this)
-        is LibraryExtension -> extension.configure(this)
-    }
+internal fun Project.configAndroid(extension: ApplicationExtension) {
+    extension.configure(this)
+    configureKotlin()
+}
+
+internal fun Project.configAndroid(extension: LibraryExtension) {
+    extension.configure(this)
     configureKotlin()
 }
 
@@ -27,6 +29,8 @@ private fun ApplicationExtension.configure(project: Project) = apply {
 
     defaultConfig {
         minSdk = MIN_SDK_VERSION
+        targetSdk = MAX_SDK_VERSION
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures { buildConfig = true }
@@ -42,6 +46,7 @@ private fun LibraryExtension.configure(project: Project) = apply {
 
     defaultConfig {
         minSdk = MIN_SDK_VERSION
+        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildFeatures { buildConfig = true }

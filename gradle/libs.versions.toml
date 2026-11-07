@@ -17,7 +17,6 @@ kotlin = "2.4.21"
 kotlinxSerializationJson = "1.12.0"
 ksp = "2.3.13"
 lifecycleViewmodelNav3 = "2.11.0"
-moshi = "1.15.2"
 nav3Core = "1.2.1"
 retrofit = "3.0.0"
 room = "2.8.5"
@@ -58,7 +57,6 @@ timber = { group = "com.jakewharton.timber", name = "timber", version.ref = "tim
 android-gradlePlugin = { group = "com.android.tools.build", name = "gradle", version.ref = "androidGradlePlugin" }
 android-tools-common = { group = "com.android.tools", name = "common", version.ref = "androidTools" }
 kotlin-gradlePlugin = { group = "org.jetbrains.kotlin", name = "kotlin-gradle-plugin", version.ref = "kotlin" }
-kotlin-metadataJvm = { group = "org.jetbrains.kotlin", name = "kotlin-metadata-jvm", version.ref = "kotlin" }
 ksp-gradlePlugin = { group = "com.google.devtools.ksp", name = "com.google.devtools.ksp.gradle.plugin", version.ref = "ksp" }
 
 [plugins]

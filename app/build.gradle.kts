@@ -3,14 +3,11 @@ plugins {
 }
 
 android {
-    namespace = "com.project.compose"
-
     defaultConfig {
         applicationId = "com.project.compose"
         versionCode = 1
         versionName = "0.0.1"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }

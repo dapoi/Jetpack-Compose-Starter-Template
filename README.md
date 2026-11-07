@@ -33,8 +33,8 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 - Hilt (Dependency Injection)
 - Navigation 3
 - Coroutine & Flow
-- Retrofit
-- Moshi
+- Retrofit (with Gson)
+- Kotlinx Serialization
 - DataStore
 - Room Database
 
