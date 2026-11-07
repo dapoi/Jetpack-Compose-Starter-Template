@@ -56,7 +56,7 @@ fun AppNavHost(navGraphs: Set<@JvmSuppressWildcards BaseNavGraph>) {
         NavDisplay(
             modifier = Modifier.fillMaxSize(),
             entries = navigationState.toEntries(entryProvider),
-            onBack = { navigator.goBack() }
+            onBack = { navigator.navigateBack() }
         )
 
         AppBottomBar(

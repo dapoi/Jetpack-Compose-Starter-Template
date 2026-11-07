@@ -55,7 +55,7 @@ internal fun HomeFetchApiScreen(
     BaseScreen(
         topBarArgs = TopBarArgs(
             title = "Fetch API Sample",
-            onClickBack = { navigator.goBack() }
+            onClickBack = { navigator.navigateBack() }
         )
     ) {
         contents?.let { data ->

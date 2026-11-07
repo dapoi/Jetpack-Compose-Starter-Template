@@ -26,7 +26,7 @@ internal fun HomeReceivedObjectScreen(
         modifier = Modifier.fillMaxSize(),
         topBarArgs = TopBarArgs(
             title = "Received Data Class Args",
-            onClickBack = { navigator.goBack() }
+            onClickBack = { navigator.navigateBack() }
         )
     ) {
         Box(
