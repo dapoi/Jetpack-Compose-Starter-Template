@@ -3,7 +3,6 @@ package plugin.module
 import org.gradle.api.Plugin
 import org.gradle.api.Project
 import org.gradle.kotlin.dsl.dependencies
-import util.Dependencies.testDependencies
 import util.ProjectConstants.coreModules
 import util.alias
 import util.implementation
@@ -27,7 +26,6 @@ class FeatureModulePlugin : Plugin<Project> {
                 implementation(libs.hilt.navigation.get())
             }
 
-            testDependencies()
         }
     }
 }

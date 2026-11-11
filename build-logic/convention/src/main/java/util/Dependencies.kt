@@ -43,9 +43,21 @@ object Dependencies {
 
     fun Project.testDependencies() {
         dependencies {
+            testImplementation(libs.junit4.get())
+            testImplementation(libs.kotlinx.coroutines.test.get())
+            testImplementation(libs.mockk.get())
+            testImplementation(libs.turbine.get())
+            testImplementation(libs.androidx.arch.core.testing.get())
             testImplementation(libs.androidx.junit.get())
             androidTestImplementation(libs.androidx.junit.get())
             androidTestImplementation(libs.androidx.espresso.core.get())
+        }
+    }
+
+    fun Project.composeTestDependencies() {
+        dependencies {
+            androidTestImplementation(libs.androidx.compose.ui.test.junit4.get())
+            debugImplementation(libs.androidx.compose.ui.test.manifest.get())
         }
     }
 }
