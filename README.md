@@ -37,6 +37,7 @@ This repository is set up as a template! 🚀 Click the **"Use this template"** 
 - Kotlinx Serialization
 - DataStore
 - Room Database
+- Unit Testing (JUnit 4, MockK, Turbine, Coroutines Test)
 
 ## 🧰 Android Module Generator
 This project comes with a CLI script to auto-generate new modules in a snap.
@@ -73,6 +74,27 @@ feature/
 
 and automatically updates `settings.gradle.kts`.
 
+## Testing
+Run unit tests across all modules with Gradle:
+
+```bash
+./gradlew test
+```
+
+Or run tests for an individual module:
+
+```bash
+./gradlew :core:common:testDebugUnitTest
+./gradlew :core:data:testDebugUnitTest
+./gradlew :core:navigation:testDebugUnitTest
+./gradlew :feature:home:testDebugUnitTest
+```
+
+The test setup uses:
+- JUnit 4 as the runner
+- MockK for mocking dependencies and suspend functions
+- Turbine for testing Flow and StateFlow emissions
+- Coroutines Test (`TestDispatcher`) for deterministic coroutine execution
 
 ## Contribution
 Contributions are welcome! Feel free to fork the repository and submit a pull request.
