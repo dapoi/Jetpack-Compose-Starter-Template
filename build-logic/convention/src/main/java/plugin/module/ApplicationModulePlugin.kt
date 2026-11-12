@@ -8,6 +8,7 @@ import org.gradle.api.Project
 import org.gradle.kotlin.dsl.configure
 import util.ProjectConstants.jniLibsDoNotStrip
 import util.ProjectConstants.resourceExcludes
+import util.Dependencies.testDependencies
 import util.alias
 import util.libs
 
@@ -27,7 +28,11 @@ class ApplicationModulePlugin : Plugin<Project> {
                     resources.excludes.addAll(resourceExcludes)
                     jniLibs { keepDebugSymbols.addAll(jniLibsDoNotStrip) }
                 }
+                testOptions {
+                    unitTests.isReturnDefaultValues = true
+                }
             }
+            testDependencies()
         }
     }
 }

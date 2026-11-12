@@ -13,6 +13,7 @@ import com.project.compose.core.common.utils.state.UiState.StateLoading
 import com.project.compose.core.common.utils.state.UiState.StateSuccess
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.Dispatchers.IO
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.Flow
@@ -22,7 +23,12 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-open class BaseViewModel @Inject constructor() : ViewModel() {
+open class BaseViewModel(
+    private val ioDispatcher: CoroutineDispatcher = IO
+) : ViewModel() {
+    @Inject
+    constructor() : this(IO)
+
     private var apiJob: Job? = null
 
     /**
@@ -35,9 +41,9 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
         response: Flow<ApiState<T>>,
         resetState: Boolean = true,
         updateState: (UiState<T>) -> Unit
-    ) {
+    ): Job {
         apiJob?.cancel()
-        apiJob = viewModelScope.launch(IO) {
+        val job = viewModelScope.launch(ioDispatcher) {
             response.map { apiState ->
                 when (apiState) {
                     is Loading -> StateLoading
@@ -52,6 +58,8 @@ open class BaseViewModel @Inject constructor() : ViewModel() {
                 }
             }
         }
+        apiJob = job
+        return job
     }
 
     /**
